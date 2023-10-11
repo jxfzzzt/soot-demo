@@ -154,7 +154,7 @@ public class BaseAPI01 {
                 && invokeExpr.getMethod().getDeclaringClass().getName().equals(declaringClass);
     }
 
-    private static void reportFieldRefInfo(SootField radiusField, Stmt stmt) {
+    private static void reportFieldRefInfo(final SootField radiusField, Stmt stmt) {
         FieldRef fieldRef = stmt.getFieldRef();
         fieldRef.apply(new AbstractRefSwitch() {
             @Override

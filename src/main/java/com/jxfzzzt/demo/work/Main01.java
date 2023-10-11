@@ -8,7 +8,7 @@ import java.util.Collections;
 
 public class Main01 {
 
-    public static final String SRC_PATH = "/Users/zhouzhuotong/java_projects/soot-demo/src/main/resources/test-demo/target/classes";
+    public static final String SRC_PATH = "src/main/resources/test-demo/target/classes";
     public static void main(String[] args) {
         initial(SRC_PATH);
         SootClass appclass = Scene.v().loadClassAndSupport("FizzBuzz");//若无法找到，则生成一个。

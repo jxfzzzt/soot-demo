@@ -7,7 +7,7 @@ import soot.jimple.internal.JIfStmt;
 
 public class HelloSoot01 {
 
-    public static final String SRC_PATH = "/Users/zhouzhuotong/java_projects/soot-demo/src/main/resources/test-demo/target/classes";
+    public static final String SRC_PATH = "src/main/resources/test-demo/target/classes";
 
     public static final String CLASS_NAME = "com.demo.test.FizzBuzz";
 
