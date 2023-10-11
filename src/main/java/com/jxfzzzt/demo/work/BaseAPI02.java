@@ -23,7 +23,7 @@ public class BaseAPI02 {
         // Call Graph
         System.out.println("-----CallGraph-----");
         CallGraph callGraph = Scene.v().getCallGraph();
-        for(Iterator<Edge> it = callGraph.edgesOutOf(areaMethod); it.hasNext(); ){
+        for (Iterator<Edge> it = callGraph.edgesOutOf(areaMethod); it.hasNext(); ) { // 枚举当前函数调用了哪些别的函数
             Edge edge = it.next();
             System.out.println(String.format("Method '%s' invokes method '%s' through stmt '%s", edge.src(), edge.tgt(), edge.srcUnit()));
         }

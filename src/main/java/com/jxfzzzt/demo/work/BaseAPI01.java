@@ -29,18 +29,19 @@ public class BaseAPI01 {
             c++;
             Stmt stmt = (Stmt) u;
             System.out.println(String.format("(%d): %s", c, stmt));
-            if (stmt.equals(firstNonIdentitiyStmt))
+            if (stmt.equals(firstNonIdentitiyStmt)) // 如果是第一条非赋值的语句
                 System.out.println("    This statement is the first non-identity statement!");
             if (stmt.containsFieldRef())
                 reportFieldRefInfo(radiusField, stmt);
-            if (doesInvokeMethod(stmt, "int area()", circleClassName)) {
+            if (doesInvokeMethod(stmt, "int area()", circleClassName)) { // 如果调用了方法，且被调用的方法是 int area()
                 System.out.println("    This statement invokes 'int area()' method");
             }
-            modifyBody(body, stmt);
+            modifyBody(body, stmt); // 修改Jimple的If分支部分
         }
 
-        System.out.println("----- Stmt: Traps -----");
         System.out.println(body);
+
+        System.out.println("----- Stmt: Traps -----");
         for (Trap trap : body.getTraps()) {
             System.out.println("===");
             System.out.println(trap);
@@ -131,7 +132,7 @@ public class BaseAPI01 {
     }
 
     private static boolean doesInvokeMethod(Stmt stmt, String subsignature, String declaringClass) {
-        if (!stmt.containsInvokeExpr())
+        if (!stmt.containsInvokeExpr()) // 判断是否含有调用方法的表达式
             return false;
         InvokeExpr invokeExpr = stmt.getInvokeExpr();
         invokeExpr.apply(new AbstractJimpleValueSwitch() {
