@@ -15,15 +15,18 @@ public class SootUtil {
      */
     public static void generalInitial(String classesPath) {
         soot.G.reset();
-        // Uncomment line below to import essential Java classes
-        // Options.v().set_prepend_classpath(true);
-        // Comment the line below to not have phantom refs (you need to uncomment the line above)
         Options.v().set_prepend_classpath(true);
         Options.v().set_allow_phantom_refs(true);
         Options.v().set_soot_classpath(classesPath); //源码打包的classes所在的目录
         Options.v().set_output_format(Options.output_format_jimple);
         Options.v().set_process_dir(Collections.singletonList(classesPath)); //源码打包的classes所在的目录
         Options.v().set_whole_program(true);
+        Options.v().set_keep_line_number(true);
+        Options.v().set_verbose(true);
+        Options.v().setPhaseOption("cg", "all-reachable:true"); // 计算全局的call grapgh
+        Options.v().set_no_bodies_for_excluded(true);
+        Options.v().set_app(true);
+
         Scene.v().loadNecessaryClasses();
         PackManager.v().runPacks();
     }

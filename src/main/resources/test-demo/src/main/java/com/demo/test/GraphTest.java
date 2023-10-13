@@ -5,12 +5,12 @@ public class GraphTest {
 
     }
 
-    private String getSecret(String x) {
+    public String getSecret(String x) {
         vulFunc(x);
         return "secret";
     }
 
-    private void vulFunc(String x) {
+    public void vulFunc(String x) {
         System.out.println("This is a Vulnerable Function. Param: " + x);
     }
 
